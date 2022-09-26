@@ -20,7 +20,7 @@ namespace CourseEnv.Infrastructure.Repositories
 
         public async Task<CourseInstance> AddCourseInstanceAsync(CourseInstance courseInstance)
         {
-            _context.Add(courseInstance);
+            await _context.AddRangeAsync(courseInstance);
             await _context.SaveChangesAsync();
             return courseInstance;
         }

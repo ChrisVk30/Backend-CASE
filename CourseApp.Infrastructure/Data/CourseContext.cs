@@ -11,8 +11,8 @@ namespace CourseEnv.Infrastructure.Data
         public int? DatePart(string datePartArg, DateTimeOffset? date) => throw new InvalidOperationException($"{nameof(DatePart)} cannot be called client side.");
         public CourseContext() { }
         public CourseContext(DbContextOptions<CourseContext> options) : base(options) { }
-        public DbSet<Course> Courses { get; set; }
-        public DbSet<CourseInstance> CourseInstances { get; set; }
+        public virtual DbSet<Course> Courses { get; set; }
+        public virtual DbSet<CourseInstance> CourseInstances { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

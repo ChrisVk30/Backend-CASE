@@ -8,13 +8,14 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CourseEnv.Core.Interfaces;
 
 namespace CourseEnv.Core.Tests
 {
     [TestClass]
     public class CourseFactoryTests
     {
-        CourseFactory sut;
+        ICourseFactory sut;
         CourseOverview courseOverview;
 
         [TestInitialize]

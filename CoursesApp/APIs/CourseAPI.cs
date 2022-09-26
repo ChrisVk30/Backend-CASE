@@ -1,5 +1,4 @@
-﻿using CourseEnv.Core.DTO;
-using CourseEnv.Core.Entities;
+﻿using CourseEnv.Core.Entities;
 using CourseEnv.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -48,7 +47,8 @@ namespace CourseApp.APIs
                 var course = await _courseService.AddCourseIfNotExistsAsync(createdCourse);
                 stats.CoursesAdded += course.Item2;
                 var createdCourseInstance = _courseFactory.CreateCourseInstance(courseOverview.StartDate, course.Item1.CourseId);
-                stats.CourseInstancesAdded += await _courseInstanceService.AddCourseInstanceIfNotExistsAsync(createdCourseInstance);
+                var courseInstance = await _courseInstanceService.AddCourseInstanceIfNotExistsAsync(createdCourseInstance);
+                stats.CourseInstancesAdded += courseInstance.Item2;
             }
             return stats;
         }
